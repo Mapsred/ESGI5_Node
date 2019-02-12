@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:title', (req, res) => {
-    Product.findOne({title: req.params.title}).then(data => res.send(data));
+    Product.findOne({ title: req.params.title }).then(data => res.send(data));
 });
 
 router.post('/', (req, res) => {
@@ -21,7 +21,16 @@ router.post('/', (req, res) => {
     });
 
     product.save().then(data => {
-        res.send(data);
+        res.status(201).send(data);
+    }).catch(error => {
+        let errors = [];
+        for (let value in error.errors) {
+            if (error.errors.hasOwnProperty(value)) {
+                errors.push(error.errors[value]['message']);
+            }
+        }
+
+        res.status(400).send(errors.join('\n'));
     });
 });
 

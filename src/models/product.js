@@ -4,11 +4,11 @@ const db = require('../libs/db');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-    title: String,
-    description: String,
-    price: Number,
-    picture_link: String,
-    quantity: Number,
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: Number, required: true },
+    picture_link: { type: String, required: true },
+    quantity: { type: Number, required: true }
     category: [
         { type: String }
     ]
