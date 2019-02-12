@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     email: String,
     firstname: { type: String, min: 1, max: 50 },
-    fistname: { type: String, min: 1, max: 50 },
+    lastname: { type: String, min: 1, max: 50 },
     password: { type: String, min: 1 },
     createdAt: Date,
     editedAt: Date,
