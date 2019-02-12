@@ -12,7 +12,6 @@ router.post('/login_check', (req, res) => {
                     token
                 });
             } else {
-                console.log("fuckit");
                 res.status(400).send({
                     error: "Invalid username/password"
                 });
