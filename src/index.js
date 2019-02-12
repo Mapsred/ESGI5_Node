@@ -1,9 +1,12 @@
 const express = require('express');
 const categoryRouter = require('./routes/category');
 const productRouter = require('./routes/product');
+const bodyParser = require('body-parser');
 
 const app = express();
 
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.use('/products', productRouter);
 app.use('/categories', categoryRouter);
