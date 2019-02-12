@@ -2,16 +2,20 @@ const express = require('express');
 const categoryRouter = require('./routes/category');
 const productRouter = require('./routes/product');
 const registerRouter = require('./routes/register');
+const authRouter = require('./routes/auth');
 const bodyParser = require('body-parser');
+const security = require('./middlewares/security');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(security.verifyToken);
 
 app.use('/products', productRouter);
 app.use('/categories', categoryRouter);
 app.use('/register', registerRouter);
+app.use('/', authRouter);
 
 app.listen(3000, () => console.log('Listening on port 3000'));
 
