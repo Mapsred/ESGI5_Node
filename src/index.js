@@ -1,4 +1,4 @@
-const Movie = require('./models/movie');
+const Movie = require('./models/movie').Movie;
 
 const movie1 = new Movie();
 movie1.title = "Test Movie 2";

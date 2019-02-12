@@ -9,4 +9,4 @@ const movieDetailsSchema = new Schema({
     released: Date
 });
 
-module.exports = db.model('Movie', movieDetailsSchema);
+module.exports.Movie = db.model('Movie', movieDetailsSchema);
