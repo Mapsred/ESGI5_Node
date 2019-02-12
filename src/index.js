@@ -1,6 +1,9 @@
 const express = require('express');
+const categoryRouter = require('./routes/category');
 
 const app = express();
+
+app.use('/categories', categoryRouter);
 
 app.listen(3000, function () {
     console.log('Listening on port 3000');
