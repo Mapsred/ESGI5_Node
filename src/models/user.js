@@ -14,4 +14,4 @@ const userSchema = new Schema({
     isDeleted: Boolean,
 });
 
-module.exports = db.model('User', userSchema);
+module.exports.User= db.model('User', userSchema);

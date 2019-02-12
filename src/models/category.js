@@ -9,4 +9,4 @@ const categorySchema = new Schema({
     products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 });
 
-module.exports = db.model('Category', categorySchema);
+module.exports.Category = db.model('Category', categorySchema);
