@@ -1,8 +1,16 @@
-const Cart = require('./models/cart').Cart;
-const Category = require('./models/category').Category;
-const Product = require('./models/product').Product;
-const User = require('./models/user').User;
+const express = require('express');
 
+const app = express();
+
+app.listen(3000, function () {
+    console.log('Listening on port 3000');
+});
+
+// const Cart = require('./models/cart').Cart;
+// const Category = require('./models/category').Category;
+// const Product = require('./models/product').Product;
+// const User = require('./models/user').User;
+//
 // const movie1 = new Movie();
 // movie1.title = "Test Movie 2";
 // movie1.year = 1930;
