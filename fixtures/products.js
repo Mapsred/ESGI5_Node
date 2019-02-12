@@ -208,41 +208,6 @@ const products = [
         "price": "228.35",
         "picture_link": "http://dummyimage.com/200x200.png/5fa2dd/ffffff",
         "quantity": 5
-    },
-    {
-        "title": "San Carlos Buckwheat",
-        "description": "Thelidium Lichen",
-        "price": "530.67",
-        "picture_link": "http://dummyimage.com/200x200.png/ff4444/ffffff",
-        "quantity": 22
-    },
-    {
-        "title": "Lyon's Pygmydaisy",
-        "description": "Spiral Ditchgrass",
-        "price": "611.82",
-        "picture_link": "http://dummyimage.com/200x200.png/cc0000/ffffff",
-        "quantity": 9
-    },
-    {
-        "title": "Plantain",
-        "description": "Pseudabutilon",
-        "price": "594.66",
-        "picture_link": "http://dummyimage.com/200x200.png/5fa2dd/ffffff",
-        "quantity": 13
-    },
-    {
-        "title": "Water Sedge",
-        "description": "Cream Milkvetch",
-        "price": "293.03",
-        "picture_link": "http://dummyimage.com/200x200.png/dddddd/000000",
-        "quantity": 21
-    },
-    {
-        "title": "Bracted Popcornflower",
-        "description": "Foothill Beardtongue",
-        "price": "61.58",
-        "picture_link": "http://dummyimage.com/200x200.png/cc0000/ffffff",
-        "quantity": 12
     }
 ];
 

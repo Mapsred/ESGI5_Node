@@ -8,8 +8,10 @@ const productSchema = new Schema({
     description: String,
     price: Number,
     picture_link: String,
-    quantity: Number
-
+    quantity: Number,
+    category: [
+        { type: String }
+    ]
 });
 
 module.exports.Product = db.model('Product', productSchema);

@@ -1,18 +1,21 @@
 const Product = require('../src/models/product').Product;
-const products = require('./products');
 
-const Category = require('../src/models/category').Category;
-const categories = require('./categories');
+const productsFixture = require('./products');
+const categoriesFixtures = require('./categories');
 
-Product.remove({});
-for (let i = 0; i < products.length; i++) {
-    const product = new Product(products[i]);
+Product.deleteMany({}, function (error, result) {
+    console.log('Products removed');
+});
+
+for (let e = 0; e < productsFixture.length; e++) {
+
+    const categories = [
+        categoriesFixtures[Math.floor(Math.random() * (categoriesFixtures.length - 1))]
+    ];
+
+    const product = new Product(productsFixture[e]);
+    product.category = categories;
+
     product.save();
-}
-
-Category.remove({});
-for (let i = 0; i < categories.length; i++) {
-    const category = new Category(categories[i]);
-    category.save();
 }
 
