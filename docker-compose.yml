@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+    mongo:
+        image: mongo
+        ports:
+            - 27017:27017
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASS}
+
+    node:
+        image: 'node:10-alpine'
+        volumes:
+            - './:/app'
+        working_dir: '/app'
+        command: 'npm start'
+        environment:
+            MONGODB_USER: ${MONGODB_USER}
+            MONGODB_PASS: ${MONGODB_PASS}
+            MONGODB_NAME: ${MONGODB_NAME}
