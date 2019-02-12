@@ -1,24 +1,23 @@
 const express = require('express');
 const createToken = require('../libs/auth').createToken;
 const router = express.Router();
+const User = require('../models/user').User;
 
 router.post('/login_check', (req, res) => {
-    console.log(req.body.email, req.body.password);
-
-
-
-    if(req.body.email === 'user@user.fr' || req.body.password === 'password') {
-        const token = createToken({
-            id: "id",
+    User.findOne({email: req.body.email, password: req.body.password}).then(
+        (user) => {
+            if(user) {
+                const token = createToken(user);
+                res.send({
+                    token
+                });
+            } else {
+                console.log("fuckit");
+                res.status(400).send({
+                    error: "Invalid username/password"
+                });
+            }
         });
-        res.send({
-            token
-        });
-    } else {
-        res.status(400).send({
-            error: "Invalid username/password"
-        });
-    }
 });
 
 module.exports = router;
