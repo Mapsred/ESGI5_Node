@@ -1,13 +1,14 @@
 const express = require('express');
 const categoryRouter = require('./routes/category');
+const productRouter = require('./routes/product');
 
 const app = express();
 
+
+app.use('/products', productRouter);
 app.use('/categories', categoryRouter);
 
-app.listen(3000, function () {
-    console.log('Listening on port 3000');
-});
+app.listen(3000, () => console.log('Listening on port 3000'));
 
 // const Cart = require('./models/cart').Cart;
 // const Category = require('./models/category').Category;
