@@ -8,9 +8,9 @@ const productSchema = new Schema({
     description: { type: String, required: true },
     price: { type: Number, required: true },
     picture_link: { type: String, required: true },
-    quantity: { type: Number, required: true }
+    quantity: { type: Number, required: true },
     category: [
-        { type: String }
+        { label: String }
     ]
 });
 

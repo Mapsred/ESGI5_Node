@@ -1,14 +1,10 @@
 const express = require('express');
-const Category = require('../models/category').Category;
+const Product = require('../models/product').Product;
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    Category.find().then(data => res.send(data));
-});
-
-router.get('/:title', (req, res) => {
-    Category.findOne({ title: req.params.title }).then(data => res.send(data));
+    Product.distinct("category.label").then(data => res.send(data));
 });
 
 module.exports = router;
