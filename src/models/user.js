@@ -10,8 +10,8 @@ const userSchema = new Schema({
     password: { type: String, min: 1, max: 255 },
     createdAt: { type: Date, default: Date.now },
     editedAt: { type: Date, default: Date.now },
-    isActive: Boolean,
-    isDeleted: Boolean,
+    isActive: {type: Boolean, default: true},
+    isDeleted: {type: Boolean, default: false}
 });
 
 module.exports.User= db.model('User', userSchema);

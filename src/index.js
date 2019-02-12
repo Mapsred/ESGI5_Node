@@ -1,6 +1,7 @@
 const express = require('express');
 const categoryRouter = require('./routes/category');
 const productRouter = require('./routes/product');
+const registerRouter = require('./routes/register');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -10,6 +11,7 @@ app.use(bodyParser.json());
 
 app.use('/products', productRouter);
 app.use('/categories', categoryRouter);
+app.use('/register', registerRouter);
 
 app.listen(3000, () => console.log('Listening on port 3000'));
 
