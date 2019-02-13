@@ -11,7 +11,7 @@ services:
 
     server:
         build: './server'
-        container_name: esgi-node-node
+        container_name: esgi-node-server
         ports:
             - 127.0.0.1:3000:3000
         volumes:
@@ -28,7 +28,7 @@ services:
 
     client:
         build: './client'
-        container_name: jai_mis_un_nom_pour_francois
+        container_name: esgi-node-client
         volumes:
             - ./client:/app/client
         working_dir: '/app/client'
