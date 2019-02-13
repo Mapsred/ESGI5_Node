@@ -32,6 +32,6 @@ services:
         volumes:
             - ./client:/app/client
         working_dir: '/app/client'
-        command: 'npm start'
+        command: 'yarn start'
         ports:
             - 127.00.1:3001:3000
