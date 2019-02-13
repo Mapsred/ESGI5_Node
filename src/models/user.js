@@ -11,7 +11,14 @@ const userSchema = new Schema({
     createdAt: { type: Date, default: Date.now },
     editedAt: { type: Date, default: Date.now },
     isActive: { type: Boolean, default: true },
-    isDeleted: { type: Boolean, default: false }
+    isDeleted: { type: Boolean, default: false },
+    cart: [{
+        price: Number,
+        quantity: Number,
+        picture_link: String,
+        description: String
+    }]
+
 });
 
 module.exports.User= db.model('User', userSchema);
