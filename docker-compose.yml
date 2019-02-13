@@ -24,3 +24,4 @@ services:
             MONGODB_USER: ${MONGODB_USER}
             MONGODB_PASS: ${MONGODB_PASS}
             MONGODB_NAME: ${MONGODB_NAME}
+            JWT_SECRET: ${JWT_SECRET}
