@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ToggleButtonContainer from "./container/ToggleButtonContainer";
+import { BrowserRouter, Link, Route } from "react-router-dom";
+import SecurityContainer from "./container/SecurityContainer";
+import ProductContainer from "./container/ProductContainer";
 
 class App extends Component {
 
@@ -20,6 +23,16 @@ class App extends Component {
                     </p>
 
                     <ToggleButtonContainer/>
+
+                    <BrowserRouter>
+                        <React.Fragment>
+                            <Link to="/security">Security</Link>
+                            <Link to="/products">Products</Link>
+
+                            <Route path="/security" component={SecurityContainer}/>
+                            <Route path="/products" component={ProductContainer}/>
+                        </React.Fragment>
+                    </BrowserRouter>
 
                     <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
                         Learn React

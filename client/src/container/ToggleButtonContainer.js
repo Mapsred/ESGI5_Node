@@ -13,10 +13,7 @@ export default class ToggleButtonContainer extends React.Component {
     toggleTheme = () => {
         console.log(this);
         this.setState({ theme: this.state.theme === "black" ? "light" : "black" });
-        this.alertChange()
     };
-
-    alertChange = () => alert(this.state.theme);
 
     render() {
         return (
