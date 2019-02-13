@@ -1,7 +1,9 @@
 const Product = require('../src/models/product').Product;
+const User = require("../src/models/user").User;
 
 const productsFixture = require('./products');
 const categoriesFixtures = require('./categories');
+const usersFixtures = require('./user');
 
 Product.deleteMany({}).then(() => {
     for (let e = 0; e < productsFixture.length; e++) {
@@ -16,5 +18,14 @@ Product.deleteMany({}).then(() => {
         product.category = categories;
 
         product.save();
+    }
+});
+
+
+User.deleteMany({}).then(() => {
+    for (let e = 0; e < usersFixtures.length; e++) {
+        const user = new User(usersFixtures[e]);
+
+        user.save();
     }
 });
