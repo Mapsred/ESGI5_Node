@@ -7,21 +7,43 @@ import RegisterContainer from "./container/RegisterContainer";
 import HeaderContainer from "./container/HeaderContainer";
 import CartContainer from './container/CartContainer';
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
+import { withStyles } from "@material-ui/core";
+
+const styles = {
+    root: {
+        flexGrow: 1,
+        zIndex: 1,
+        overflow: "hidden",
+        position: "relative",
+        display: "flex"
+    },
+    content: {
+        flexGrow: 1,
+        maxWidth: '70vw',
+        margin: 'auto',
+        minWidth: 0 // So the Typography noWrap works
+    }
+};
 
 class App extends Component {
     render() {
+        const { classes } = this.props;
         return (
             <React.Fragment>
                 <CssBaseline/>
                 <BrowserRouter>
                     <React.Fragment>
                         <HeaderContainer/>
-                        <Switch>
-                            <Route path="/register" component={RegisterContainer}/>
-                            <Route path="/security" component={SecurityContainer}/>
-                            <Route path="/products" component={ProductContainer}/>
-                            <Route path="/cart" component={CartContainer}/>
-                        </Switch>
+                        <div className={classes.root}>
+                            <main className={classes.content}>
+                                <Switch>
+                                    <Route path="/register" component={RegisterContainer}/>
+                                    <Route path="/security" component={SecurityContainer}/>
+                                    <Route path="/products" component={ProductContainer}/>
+                                    <Route path="/cart" component={CartContainer}/>
+                                </Switch>
+                            </main>
+                        </div>
                     </React.Fragment>
                 </BrowserRouter>
             </React.Fragment>
@@ -29,4 +51,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default withStyles(styles)(App);

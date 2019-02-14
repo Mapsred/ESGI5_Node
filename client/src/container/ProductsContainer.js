@@ -3,6 +3,7 @@ import { fetchProducts } from "../redux/actions/products";
 import { connect } from "react-redux";
 import Product from "../components/Product";
 import { addToCart } from "../redux/actions/user";
+import Grid from "@material-ui/core/Grid/Grid";
 
 class ProductsContainer extends React.Component {
     constructor(props) {
@@ -16,29 +17,23 @@ class ProductsContainer extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
-
-                <p>Product Container</p>
-                <form onSubmit={this.onButtonClick}>
-                    <ul>
-                        {this.props.products.map((product, i) =>
-                            <li key={i}>
-                                {<Product product={product} onClick={()=> this.onButtonClick(product)}/>}
-                            </li>
-                        )}
-                    </ul>
-                </form>
-
-            </React.Fragment>
+            <Grid container spacing={24} alignContent={'space-around'}>
+                {this.props.products.map((product, i) =>
+                    <Grid item xs={6} md={4} lg={3} key={i}>
+                        {<Product product={product} onClick={() => this.onButtonClick(product)}/>}
+                    </Grid>
+                )}
+            </Grid>
         )
     }
 }
 
 const mapStateToProps = (states) => {
-    console.log(states);
+    const { products, product } = states.products;
+
     return {
-        products: states.products.products,
-        product: states.products.product
+        products,
+        product
     };
 };
 

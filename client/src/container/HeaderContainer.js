@@ -12,6 +12,9 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const styles = {
     root: {
+        marginBottom: 24
+    },
+    bar: {
         display: 'flex',
         justifyContent: 'space-between'
     },
@@ -28,8 +31,8 @@ class HeaderContainer extends React.Component {
         const { classes, user } = this.props;
 
         return (
-            <AppBar position="static">
-                <Toolbar className={classes.root}>
+            <AppBar position="static" className={classes.root}>
+                <Toolbar className={classes.bar}>
                     <Typography variant="title" color="inherit">
                         ReactStoreFront
                     </Typography>
