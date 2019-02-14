@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from "../redux/actions/user";
 import Typography from "@material-ui/core/Typography/Typography";
-import Grid from "@material-ui/core/Grid/Grid";
 import ProductCart from "../components/ProductCart";
 
 class CartContainer extends Component {
