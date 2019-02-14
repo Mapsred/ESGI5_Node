@@ -1,5 +1,11 @@
 import React from 'react';
 
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import FormGroup from '@material-ui/core/FormGroup';
+import Button from '@material-ui/core/Button';
+import FormLabel from '@material-ui/core/FormLabel';
+
 export default class RegisterForm extends React.Component {
 
     state = {
@@ -10,11 +16,9 @@ export default class RegisterForm extends React.Component {
         passwordCheck: ''
     };
 
-    handleKeyUp = (event, field) => {
-        const input = event.currentTarget;
-
+    handleKeyUp = name => event => {
         this.setState({
-            [field]: input.value
+            [name]: event.target.value,
         });
     };
 
@@ -25,20 +29,52 @@ export default class RegisterForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Email</label>
-                <input type="email" onKeyUp={(event) => this.handleKeyUp(event, 'email')}/>
-                <label>Firstname</label>
-                <input type="firstname" onKeyUp={(event) => this.handleKeyUp(event, 'firstname')}/>
-                <label>Lastname</label>
-                <input type="lastname" onKeyUp={(event) => this.handleKeyUp(event, 'lastname')}/>
-                <label>Password</label>
-                <input type="password" onKeyUp={(event) => this.handleKeyUp(event, 'password')}/>
-                <label>Password Check</label>
-                <input type="password" onKeyUp={(event) => this.handleKeyUp(event, 'passwordCheck')}/>
-                <button>Submit</button>
-            </form>
+            <Grid container justify="center">
+                <form onSubmit={this.handleSubmit}>
+                    <FormLabel component="legend">Inscription</FormLabel>
+                    <FormGroup>
+                        <TextField
+                            id="email"
+                            label="Email"
+                            onKeyUp={this.handleKeyUp('email')}
+                            margin="normal"
+                            type="email"
+                            style={{width: 200}}
+                        />
+                        <TextField
+                            id="firstname"
+                            label="Firstname"
+                            onKeyUp={this.handleKeyUp('firstname')}
+                            margin="normal"
+                            type="text"
+                        />
+                        <TextField
+                            id="lastname"
+                            label="Lastname"
+                            onKeyUp={this.handleKeyUp('lastname')}
+                            margin="normal"
+                            type="text"
+                        />
+                        <TextField
+                            id="password"
+                            label="Password"
+                            onKeyUp={this.handleKeyUp('password')}
+                            margin="normal"
+                            type="password"
+                        />
+                        <TextField
+                            id="passwordCheck"
+                            label="Password check"
+                            onKeyUp={this.handleKeyUp('passwordCheck')}
+                            margin="normal"
+                            type="password"
+                        />
+                        <Button type="submit" variant="contained" color="primary">
+                            S'enregistrer
+                        </Button>
+                    </FormGroup>
+                </form>
+            </Grid>
         )
     }
-
 }

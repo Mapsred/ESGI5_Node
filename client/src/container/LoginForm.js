@@ -12,6 +12,8 @@ export default class LoginForm extends React.Component {
     handleChange = (event, field) => {
         const input = event.currentTarget;
 
+        console.log(input.value);
+
         this.setState({
             formData: Object.assign({}, this.state.formData, {
                 [field]: input.value
