@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import SecurityContainer from "./container/SecurityContainer";
-import ProductContainer from "./container/ProductContainer";
+import ProductContainer from "./container/ProductsContainer";
 import RegisterContainer from "./container/RegisterContainer";
 import HeaderContainer from "./container/HeaderContainer";
 import CartContainer from './container/CartContainer';
