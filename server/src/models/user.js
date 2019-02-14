@@ -13,12 +13,12 @@ const userSchema = new Schema({
     isActive: { type: Boolean, default: true },
     isDeleted: { type: Boolean, default: false },
     cart: [{
+        product_id: { type: Schema.Types.ObjectId, ref: 'Product' },
         price: Number,
-        quantity: Number,
         picture_link: String,
         description: String
     }]
 
 });
 
-module.exports.User= db.model('User', userSchema);
+module.exports.User = db.model('User', userSchema);
