@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "@material-ui/core/Card/Card";
-import CardHeader from "@material-ui/core/CardHeader/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia/CardMedia";
 import CardContent from "@material-ui/core/CardContent/CardContent";
 import Typography from "@material-ui/core/Typography/Typography";
@@ -59,6 +58,9 @@ class Product extends React.PureComponent {
                             <Button size="small" onClick={() => this.props.onClick()}>Remove</Button>
                         </div>
                     </CardContent>
+                    <CardActions>
+                        <Button size="small" color="primary" onClick={() => this.props.onClick()}>Remove from cart</Button>
+                    </CardActions>
                 </div>
             </Card>
         )

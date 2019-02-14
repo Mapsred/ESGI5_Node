@@ -55,5 +55,27 @@ export const addToCart = (data, dispatch) => {
         type: 'RECEIVE_USER',
         payload: {}
     }
+};
 
+
+export const removeFromCart = (id, dispatch) => {
+    const token = localStorage.getItem('token');
+
+    fetch(`http://127.0.0.1:3000/user/cart/${id}`,
+        {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => dispatch(receiveUser(data)))
+        .catch(error => console.log(error));
+
+    return {
+        type: 'RECEIVE_USER',
+        payload: {}
+    }
 };
