@@ -6,11 +6,13 @@ import ProductContainer from "./container/ProductsContainer";
 import RegisterContainer from "./container/RegisterContainer";
 import HeaderContainer from "./container/HeaderContainer";
 import CartContainer from './container/CartContainer';
+import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 
 class App extends Component {
     render() {
         return (
             <React.Fragment>
+                <CssBaseline/>
                 <BrowserRouter>
                     <React.Fragment>
                         <HeaderContainer/>

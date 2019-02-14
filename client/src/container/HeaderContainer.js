@@ -1,12 +1,26 @@
 import React from 'react';
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
-import { Link } from 'react-router-dom'
 import Typography from "@material-ui/core/Typography";
 import connect from "react-redux/es/connect/connect";
-import AuthControls from "../components/AuthControls";
-import AccountControls from "../components/AccountControls";
 import { fetchUser } from "../redux/actions/user";
+import Button from "@material-ui/core/Button/Button";
+import { withStyles } from "@material-ui/core";
+import AccountControls from "../components/AccountControls";
+import AuthControls from "../components/AuthControls";
+
+const styles = {
+    root: {
+        flexGrow: 1,
+    },
+    flex: {
+        flex: 1,
+    },
+    menuButton: {
+        marginLeft: -12,
+        marginRight: 20,
+    },
+};
 
 class HeaderContainer extends React.Component {
     constructor(props) {
@@ -16,13 +30,13 @@ class HeaderContainer extends React.Component {
     }
 
     render() {
-        const { user } = this.props;
+        const { classes, user } = this.props;
 
         return (
             <AppBar position="static">
                 <Toolbar>
-                    <Typography>
-                        <Link to='/'>ReactStoreFront</Link>
+                    <Typography variant="title" color="inherit" className={classes.flex}>
+                        ReactStoreFront
                     </Typography>
                     {!user.isActive && <AuthControls/>}
                     {user.isActive && <AccountControls user={user}/>}
@@ -46,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HeaderContainer));
