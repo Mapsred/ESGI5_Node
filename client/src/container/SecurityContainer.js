@@ -13,10 +13,18 @@ class SecurityContainer extends React.Component {
         this.props.login(data.email, data.password);
     };
 
+    handleLogged = () => {
+        this.props.history.push('/security/dashboard');
+    };
+
     render() {
         return (
             <Switch>
-                <Route path="/security/login" render={() => <LoginForm user={this.props.user} onSubmit={this.handleSubmit}/>}/>
+                <Route path="/security/login" render={() => {
+                    return <LoginForm user={this.props.user}
+                                      onSubmit={this.handleSubmit}
+                                      onSuccess={this.handleLogged}/>
+                }}/>
                 <Route path="/security/dashboard" component={DashboardContainer}/>
             </Switch>
         );
