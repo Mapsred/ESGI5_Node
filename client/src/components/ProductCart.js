@@ -9,10 +9,18 @@ import CardActions from "@material-ui/core/CardActions/CardActions";
 import Button from "@material-ui/core/Button/Button";
 
 const styles = {
+    card: {
+        display: 'flex',
+        width: '35vw',
+        margin: '24px auto',
+    },
     media: {
-        height: 0,
-        paddingTop: '56.25%'
-    }
+        width: 151,
+        height: 151,
+    },
+    details: {
+        display: 'flex',
+    },
 };
 
 class Product extends React.PureComponent {
@@ -20,17 +28,18 @@ class Product extends React.PureComponent {
         const { product, classes } = this.props;
 
         return (
-            <Card>
-                <CardHeader title={product.title}/>
-                <CardMedia image={product.picture_link} title={product.title} className={classes.media}/>
-                <CardContent>
-                    <Typography paragraph>
-                        {product.description}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small" color="primary" onClick={() => this.props.onClick()}>Add to cart</Button>
-                </CardActions>
+            <Card className={classes.card}>
+                <div className={classes.details}>
+                    <CardMedia image={product.picture_link} title={product.title} className={classes.media}/>
+                    <CardContent>
+                        <Typography variant={"title"}>
+                            Test
+                        </Typography>
+                        <Typography paragraph>
+                            {product.description}
+                        </Typography>
+                    </CardContent>
+                </div>
             </Card>
         )
     }
