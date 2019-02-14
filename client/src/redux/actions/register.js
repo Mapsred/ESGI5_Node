@@ -1,5 +1,3 @@
-import {logUser} from "./security";
-
 const registerUser = (data) => {
     return {
         type: 'REGISTER',
