@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../components/Banner";
+import ToolbarHeader from "../components/ToolbarHeader";
 import ToggleButton from "../components/ToggleButton";
 
 export default class ToggleButtonContainer extends React.Component {
@@ -19,7 +19,7 @@ export default class ToggleButtonContainer extends React.Component {
         return (
             <React.Fragment>
                 <ToggleButton toggleHandler={this.toggleTheme}/>
-                <Banner content={this.state.theme}/>
+                <ToolbarHeader content={this.state.theme}/>
             </React.Fragment>
         )
     }

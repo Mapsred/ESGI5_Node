@@ -9,7 +9,7 @@ import { login } from "../redux/actions/security";
 class SecurityContainer extends React.Component {
 
     handleSubmit = (data) => {
-        this.props.login(data.email, data.password)
+        this.props.login(data.email, data.password);
     };
 
     render() {

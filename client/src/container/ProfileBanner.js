@@ -1,12 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Banner from "../components/Banner";
-
 class ProfileBanner extends React.Component {
     render() {
         const { user, isLogged } = this.props;
-        return <Banner content={isLogged ? user.token : 'Not connected'}/>
+        return <p content={isLogged ? user.token : 'Not connected'}/>
     }
 }
 

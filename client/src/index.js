@@ -8,11 +8,6 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from "./redux/reducers";
 
-import 'jquery';
-import 'popper.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
-
 const store = createStore(rootReducer);
 
 ReactDOM.render(
