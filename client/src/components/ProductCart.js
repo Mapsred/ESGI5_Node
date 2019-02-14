@@ -20,7 +20,19 @@ const styles = {
     },
     details: {
         display: 'flex',
+        width: '100%',
     },
+    column: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        width: '100%',
+    },
+    actions: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+    }
 };
 
 class Product extends React.PureComponent {
@@ -31,13 +43,21 @@ class Product extends React.PureComponent {
             <Card className={classes.card}>
                 <div className={classes.details}>
                     <CardMedia image={product.picture_link} title={product.title} className={classes.media}/>
-                    <CardContent>
-                        <Typography variant={"title"}>
-                            Test
-                        </Typography>
-                        <Typography paragraph>
-                            {product.description}
-                        </Typography>
+                    <CardContent className={classes.column}>
+                        <div>
+                            <Typography variant={"title"}>
+                                {product.title}
+                            </Typography>
+                            <Typography paragraph>
+                                {product.description}
+                            </Typography>
+                        </div>
+                        <div className={classes.actions}>
+                            <Typography paragraph>
+                                Prix : {product.price}
+                            </Typography>
+                            <Button size="small" onClick={() => this.props.onClick()}>Remove</Button>
+                        </div>
                     </CardContent>
                 </div>
             </Card>
