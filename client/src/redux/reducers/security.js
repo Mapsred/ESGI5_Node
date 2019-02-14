@@ -13,9 +13,9 @@ const reducer = function (state = { isLogged: false, user: null }, action) {
                 isLogged: false,
                 user: null
             });
+        default:
+            return state;
     }
-
-    return state;
 };
 
 export default reducer;
