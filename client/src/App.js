@@ -5,6 +5,7 @@ import SecurityContainer from "./container/SecurityContainer";
 import ProductContainer from "./container/ProductContainer";
 import RegisterContainer from "./container/RegisterContainer";
 import HeaderContainer from "./container/HeaderContainer";
+import CartContainer from './container/CartContainer';
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
                             <Route path="/register" component={RegisterContainer}/>
                             <Route path="/security" component={SecurityContainer}/>
                             <Route path="/products" component={ProductContainer}/>
+                            <Route path="/cart" component={CartContainer}/>
                         </Switch>
                     </React.Fragment>
                 </BrowserRouter>

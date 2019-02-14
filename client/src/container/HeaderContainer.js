@@ -18,6 +18,9 @@ class HeaderContainer extends React.Component {
                     <Typography>
                     <Link to="/register">Register</Link>
                     </Typography>
+                    <Typography>
+                    <Link to="/cart">Cart</Link>
+                    </Typography>
                 </Toolbar>
             </AppBar>
         )
