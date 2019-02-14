@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 
 import SecurityContainer from "./container/SecurityContainer";
 import ProductContainer from "./container/ProductContainer";
-import ProfileBanner from './container/ProfileBanner';
+import HeaderContainer from "./container/HeaderContainer";
 
 class App extends Component {
 
     render() {
-
         return (
-            <div className="App">
-                <header className="App-header">
-                    <ProfileBanner/>
-
+            <React.Fragment>
+                <HeaderContainer/>
+                <div className="container">
                     <BrowserRouter>
                         <React.Fragment>
                             <Link to="/security/login">Login</Link>
@@ -26,8 +23,8 @@ class App extends Component {
                             </Switch>
                         </React.Fragment>
                     </BrowserRouter>
-                </header>
-            </div>
+                </div>
+            </React.Fragment>
         );
     }
 }
