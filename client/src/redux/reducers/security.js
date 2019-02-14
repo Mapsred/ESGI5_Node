@@ -5,8 +5,8 @@ const reducer = function (state = { isLogged: false, user: null }, action) {
             localStorage.setItem('token', action.payload.token);
 
             return Object.assign({}, state, {
-                isLogged: true,
-                user: action.payload
+                isLogged: false,
+                user: null
             });
         case 'LOGOUT':
             return Object.assign({}, state, {

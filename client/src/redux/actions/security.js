@@ -1,4 +1,21 @@
-const logUser = (data) => {
+import { fetchUser } from "./user";
+
+const logUser = (data, dispatch) => {
+    const token = localStorage.getItem('token');
+
+    fetch('http://127.0.0.1:3000/user',
+        {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+        .then(response => response.json())
+        .then(() => dispatch(fetchUser(dispatch)))
+        .catch(error => console.log(error));
+
     return {
         type: 'LOGIN',
         payload: data
@@ -18,7 +35,7 @@ const login = (email, password, dispatch) => {
             }
         })
         .then(response => response.json())
-        .then(data => dispatch(logUser(data)))
+        .then(data => dispatch(logUser(data, dispatch)))
         .catch(error => console.log(error));
 
     return {

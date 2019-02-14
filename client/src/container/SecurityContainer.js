@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import LoginForm from "./LoginForm";
 import { login } from "../redux/actions/security";
+import DashboardContainer from "./DashboardContainer";
 
 
 class SecurityContainer extends React.Component {
@@ -15,7 +16,8 @@ class SecurityContainer extends React.Component {
     render() {
         return (
             <Switch>
-                <Route path="/security/login" render={() => <LoginForm onSubmit={this.handleSubmit}/>}/>
+                <Route path="/security/login" render={() => <LoginForm user={this.props.user} onSubmit={this.handleSubmit}/>}/>
+                <Route path="/security/dashboard" component={DashboardContainer}/>
             </Switch>
         );
     }
@@ -27,4 +29,12 @@ const mapsDispatchToProps = dispatch => {
     }
 };
 
-export default connect(undefined, mapsDispatchToProps)(SecurityContainer);
+const mapsStateToProps = (state) => {
+    const { user: { user } } = state;
+
+    return {
+        user
+    }
+};
+
+export default connect(mapsStateToProps, mapsDispatchToProps)(SecurityContainer);

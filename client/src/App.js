@@ -8,7 +8,6 @@ import HeaderContainer from "./container/HeaderContainer";
 import CartContainer from './container/CartContainer';
 
 class App extends Component {
-
     render() {
         return (
             <React.Fragment>
