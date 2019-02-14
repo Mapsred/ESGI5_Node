@@ -6,8 +6,11 @@ const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
 const bodyParser = require('body-parser');
 const security = require('./middlewares/security');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
