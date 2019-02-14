@@ -1,3 +1,12 @@
+import {logUser} from "./security";
+
+const registerUser = (data) => {
+    return {
+        type: 'REGISTER',
+        payload: data
+    }
+};
+
 const register = (data, dispatch) => {
     fetch('http://127.0.0.1:3000/register',
         {
@@ -9,9 +18,16 @@ const register = (data, dispatch) => {
             }
         })
         .then(response => response.json())
+        .then(data => dispatch(registerUser(data)))
         .catch(error => console.log(error));
+
+    return {
+        type: 'register',
+        payload: {}
+    }
 };
 
 export {
-    register
+    register,
+    registerUser
 }

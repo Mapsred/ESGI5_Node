@@ -6,7 +6,7 @@ import RegisterForm from "./RegisterForm";
 import { register } from "../redux/actions/register";
 
 
-class SecurityContainer extends React.Component {
+class RegisterContainer extends React.Component {
 
     handleSubmit = (data) => {
         const filteredData = {
@@ -21,9 +21,7 @@ class SecurityContainer extends React.Component {
 
     render() {
         return (
-            <Switch>
-                <Route path="/register" render={() => <RegisterForm onSubmit={this.handleSubmit}/>}/>
-            </Switch>
+            <RegisterForm onSubmit={this.handleSubmit}/>
         );
     }
 }
@@ -34,4 +32,4 @@ const mapsDispatchToProps = dispatch => {
     }
 };
 
-export default connect(undefined, mapsDispatchToProps)(SecurityContainer);
+export default connect(undefined, mapsDispatchToProps)(RegisterContainer);
