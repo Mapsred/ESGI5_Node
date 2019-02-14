@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
     Product.find().then(data => res.send(data));
 });
 
-router.get('/:title', (req, res) => {
-    Product.findOne({ title: req.params.title }).then(data => res.send(data));
+router.get('/:id', (req, res) => {
+    Product.findOne({ _id: req.params.id }).then(data => res.send(data));
 });
 
 router.post('/', (req, res) => {

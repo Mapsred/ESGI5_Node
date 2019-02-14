@@ -5,6 +5,10 @@ const reducer = function (state = { products: [] }, action) {
             return Object.assign({}, state, {
                 products: action.payload
             });
+        case 'PRODUCT':
+            return Object.assign({}, state, {
+                product: action.payload
+            });
         default:
             return state;
     }
