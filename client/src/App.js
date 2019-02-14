@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import SecurityContainer from "./container/SecurityContainer";
 import ProductContainer from "./container/ProductContainer";
+import RegisterContainer from "./container/RegisterContainer";
 import HeaderContainer from "./container/HeaderContainer";
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
                     <React.Fragment>
                         <HeaderContainer/>
                         <Switch>
+                            <Route path="/register" component={RegisterContainer}/>
                             <Route path="/security" component={SecurityContainer}/>
                             <Route path="/products" component={ProductContainer}/>
                         </Switch>
