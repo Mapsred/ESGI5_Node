@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import LoginForm from "./LoginForm";
 import { login } from "../redux/actions/security";
 import DashboardContainer from "./DashboardContainer";
+import LogoutContainer from "./LogoutContainer";
 
 
 class SecurityContainer extends React.Component {
@@ -27,6 +28,7 @@ class SecurityContainer extends React.Component {
                                       onSuccess={this.handleLogged}/>
                 }}/>
                 <Route path="/security/dashboard" component={DashboardContainer}/>
+                <Route path="/security/logout" component={LogoutContainer}/>
             </Switch>
         );
     }

@@ -79,3 +79,12 @@ export const removeFromCart = (id, dispatch) => {
         payload: {}
     }
 };
+
+export const logout = () => {
+    localStorage.removeItem('token');
+
+    return {
+        type: 'USER',
+        payload: {}
+    }
+};

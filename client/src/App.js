@@ -10,7 +10,7 @@ import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import { withStyles } from "@material-ui/core";
 import { connect } from "react-redux";
 import NotFound from "./components/NotFound";
-import Home from "./components/Home";
+import Home from "./container/Home";
 
 const styles = {
     root: {
@@ -30,7 +30,7 @@ const styles = {
 
 class App extends Component {
     render() {
-        const { classes, user } = this.props;
+        const { classes } = this.props;
         return (
             <React.Fragment>
                 <CssBaseline/>

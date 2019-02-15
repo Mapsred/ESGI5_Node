@@ -1,5 +1,6 @@
 const Product = require('../src/models/product').Product;
 const User = require("../src/models/user").User;
+const bcrypt = require('bcryptjs');
 
 const productsFixture = require('./products');
 const categoriesFixtures = require('./categories');
@@ -25,6 +26,9 @@ Product.deleteMany({}).then(() => {
 User.deleteMany({}).then(() => {
     for (let e = 0; e < usersFixtures.length; e++) {
         const user = new User(usersFixtures[e]);
+
+        const salt = bcrypt.genSaltSync(10);
+        user.password = bcrypt.hashSync(user.password, salt);
 
         user.save();
     }
