@@ -22,6 +22,7 @@ class SecurityContainer extends React.Component {
             <Switch>
                 <Route path="/security/login" render={() => {
                     return <LoginForm user={this.props.user}
+                                      login={this.props.loginRet}
                                       onSubmit={this.handleSubmit}
                                       onSuccess={this.handleLogged}/>
                 }}/>
@@ -40,8 +41,14 @@ const mapsDispatchToProps = dispatch => {
 const mapsStateToProps = (state) => {
     const { user: { user } } = state;
 
+    let loginRet = {};
+
+    if(typeof state.security.login !== "undefined")
+        loginRet = state.security.login;
+
     return {
-        user
+        user,
+        loginRet
     }
 };
 

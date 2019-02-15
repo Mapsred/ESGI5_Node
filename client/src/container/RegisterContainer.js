@@ -6,7 +6,6 @@ import { register } from "../redux/actions/register";
 
 
 class RegisterContainer extends React.Component {
-
     handleSubmit = (data) => {
         const filteredData = {
             email: data.email,
@@ -18,17 +17,27 @@ class RegisterContainer extends React.Component {
         this.props.register(filteredData)
     };
 
+    handleRegistered = () => {
+        this.props.history.push('/security/login');
+    };
+
     render() {
         return (
-            <RegisterForm onSubmit={this.handleSubmit}/>
+            <RegisterForm onSubmit={this.handleSubmit} onSuccess={this.handleRegistered} register={this.props.registered}/>
         );
     }
 }
 
-const mapsDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         register: (data) => dispatch(register(data, dispatch))
     }
 };
 
-export default connect(undefined, mapsDispatchToProps)(RegisterContainer);
+const mapStateToProps = (state) => {
+    return {
+        registered: state.register.register
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer);

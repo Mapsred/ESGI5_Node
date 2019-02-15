@@ -5,6 +5,8 @@ import Product from "../components/Product";
 import { addToCart } from "../redux/actions/user";
 import Grid from "@material-ui/core/Grid/Grid";
 import Snackbar from "@material-ui/core/Snackbar/Snackbar";
+import Jesus from '../components/Jesus';
+import Button from "@material-ui/core/Button/Button";
 
 class ProductsContainer extends React.Component {
 
@@ -31,6 +33,11 @@ class ProductsContainer extends React.Component {
         });
     };
 
+    Jesus = () => {
+        const jesus = new Jesus();
+        jesus.walkOnWater();
+    };
+
     render() {
         return (
             <React.Fragment>
@@ -51,6 +58,7 @@ class ProductsContainer extends React.Component {
                     onClose={this.handleCloseNotification}
                     message={<span>Added to cart</span>}
                 />
+                <Button onClick={this.Jesus}>Jesus Walks on Water</Button>
             </React.Fragment>
         )
     }

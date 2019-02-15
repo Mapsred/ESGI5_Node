@@ -20,7 +20,7 @@ const register = (data, dispatch) => {
         .catch(error => console.log(error));
 
     return {
-        type: 'register',
+        type: 'REGISTER',
         payload: {}
     }
 };

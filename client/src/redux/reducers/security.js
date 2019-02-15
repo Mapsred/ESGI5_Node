@@ -6,7 +6,8 @@ const reducer = function (state = { isLogged: false, user: null }, action) {
 
             return Object.assign({}, state, {
                 isLogged: false,
-                user: null
+                user: null,
+                login: action.payload
             });
         case 'LOGOUT':
             return Object.assign({}, state, {
