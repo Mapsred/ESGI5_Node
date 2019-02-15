@@ -18,9 +18,7 @@ export default ({ user }) => <React.Fragment>
           variant='body1'>{user.firstname} {user.lastname}</Link>
     <Button color="inherit">
         <Link component={RouterLink} to='/security/logout' color='inherit'>
-            <Badge badgeContent={user.cart.length} color="secondary">
-                <ExitToApp/>
-            </Badge>
+            <ExitToApp/>
         </Link>
     </Button>
 </React.Fragment>
