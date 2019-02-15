@@ -5,13 +5,13 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
 
-    User.findOne({_id: req.user.payload.id})
+    User.findOne({ _id: req.user.payload.id })
         .then((user) => res.send(user))
         .catch(() => res.sendStatus(404));
 });
 
 router.post('/cart', (req, res) => {
-    User.findOne({_id: req.user.payload.id})
+    User.findOne({ _id: req.user.payload.id })
         .then((user) => {
             if (user.cart === undefined) {
                 user.cart = [];
@@ -35,17 +35,20 @@ router.post('/cart', (req, res) => {
 });
 
 router.delete("/cart/:id", (req, res) => {
-    User.findOne({_id: req.user.payload.id})
+    User.findOne({ _id: req.user.payload.id })
         .then((user) => {
             for (let i = 0; i < user.cart.length; i++) {
-                if (String(user.cart[i]._id) === req.params.id) {
-                    user.update({$pull: {"cart": {_id: user.cart[i]._id}}});
-                    user.save();
-                    break;
+                if (String(user.cart[i]._id) !== req.params.id) {
+                    continue;
                 }
+
+                user.update({ $pull: { "cart": { _id: user.cart[i]._id } } })
+                    .then(() => {
+                        user.cart = user.cart.filter(product => String(product._id) !== req.params.id);
+                        res.send(user);
+                    });
             }
 
-            res.send(user);
         })
         .catch(error => {
             console.log(error);

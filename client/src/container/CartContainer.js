@@ -40,7 +40,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         fetchUser: () => dispatch(fetchUser(dispatch)),
-        removeFromCart: (id) => dispatch(removeFromCart(id))
+        removeFromCart: (id) => dispatch(removeFromCart(id, dispatch))
     }
 }
 
