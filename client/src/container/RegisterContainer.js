@@ -17,9 +17,13 @@ class RegisterContainer extends React.Component {
         this.props.register(filteredData)
     };
 
+    handleRegistered = () => {
+        this.props.history.push('/security/login');
+    };
+
     render() {
         return (
-            <RegisterForm onSubmit={this.handleSubmit} register={this.props.registered}/>
+            <RegisterForm onSubmit={this.handleSubmit} onSuccess={this.handleRegistered} register={this.props.registered}/>
         );
     }
 }

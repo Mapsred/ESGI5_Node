@@ -29,6 +29,12 @@ export default class RegisterForm extends React.Component {
         this.props.onSubmit(this.state);
     };
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (typeof this.props.register.email !== "undefined") {
+            this.props.onSuccess();
+        }
+    }
+
     render() {
         let errors = {};
         if(typeof this.props.register.error !== undefined && this.props.register.details !== undefined && this.props.register.details.length > 0){

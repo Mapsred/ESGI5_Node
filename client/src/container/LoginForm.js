@@ -16,15 +16,6 @@ export default class LoginForm extends React.Component {
         }
     };
 
-    // handleChange = (event, field) => {
-    //     const input = event.currentTarget;
-    //     this.setState({
-    //         formData: Object.assign({}, this.state.formData, {
-    //             [field]: input.value
-    //         })
-    //     });
-    // };
-
     handleChange = name => event => {
         this.setState({
             formData: Object.assign({}, this.state.formData, {
@@ -46,15 +37,31 @@ export default class LoginForm extends React.Component {
     }
 
     render() {
+        let errors = {};
+        if(typeof this.props.login.error !== undefined && this.props.login.details !== undefined && this.props.login.details.length > 0){
+            const details = this.props.login.details;
+            for(let i in details) {
+                errors[details[i]['param']] = details[i]['msg'];
+            }
+        }
+
+        const shouldHaveError = function(field) {
+            return Object.entries(errors).length !== 0 && errors.constructor === Object && typeof errors[field] !== "undefined";
+        };
+
+        const getErrorMsg = function(field) {
+            return errors[field] !== "undefined" ? errors[field] : "";
+        };
+
         return (
             <Grid container justify="center">
                 <form noValidate onSubmit={this.handleSubmit}>
                     <FormLabel component="legend">Connexion</FormLabel>
                     <FormGroup>
                         <FormControl>
-                            {/*{shouldHaveError('email') && <FormHelperText style={{color: "red"}}>{getErrorMsg('email')}</FormHelperText>}*/}
+                            {shouldHaveError('email') && <FormHelperText style={{color: "red"}}>{getErrorMsg('email')}</FormHelperText>}
                             <TextField
-                                // error={shouldHaveError('email')}
+                                error={shouldHaveError('email')}
                                 id="email"
                                 label="Email"
                                 onKeyUp={this.handleChange('email')}
@@ -64,9 +71,9 @@ export default class LoginForm extends React.Component {
                             />
                         </FormControl>
                         <FormControl>
-                            {/*{shouldHaveError('email') && <FormHelperText style={{color: "red"}}>{getErrorMsg('email')}</FormHelperText>}*/}
+                            {shouldHaveError('password') && <FormHelperText style={{color: "red"}}>{getErrorMsg('password')}</FormHelperText>}
                             <TextField
-                                // error={shouldHaveError('email')}
+                                error={shouldHaveError('password')}
                                 id="password"
                                 label="Password"
                                 onKeyUp={this.handleChange('password')}
@@ -85,5 +92,4 @@ export default class LoginForm extends React.Component {
             </Grid>
         )
     }
-
 }
