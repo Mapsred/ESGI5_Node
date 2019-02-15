@@ -17,6 +17,12 @@ class CartContainer extends Component {
 
     render() {
         const products = this.props.user.cart;
+        let total = 0;
+        for (let i = 0; i < products.length; i++) {
+            const product = products[i];
+            total+= product.price;
+        }
+
 
         return (
             <React.Fragment>
@@ -24,6 +30,8 @@ class CartContainer extends Component {
                 {products.map((product, i) =>
                     <ProductCart key={i} product={product} onClick={() => this.onButtonClick(product)}/>
                 )}
+                <hr/>
+                <Typography variant={'h5'}>Total : {total} € </Typography>
             </React.Fragment>
         );
     }
