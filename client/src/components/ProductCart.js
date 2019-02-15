@@ -52,7 +52,7 @@ class Product extends React.PureComponent {
                         </div>
                         <div className={classes.actions}>
                             <Typography paragraph>
-                                Prix : {product.price}
+                                Prix : {product.price} €
                             </Typography>
                             <Button size="small" onClick={() => this.props.onClick()}>Remove</Button>
                         </div>
