@@ -31,12 +31,14 @@ router.post('/', [
         return res.status(400).json(errorsStructure);
     }
 
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(req.body.password, salt);
+
     const user = new User({
         email: req.body.email,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        password: req.body.password,
-        passwordCheck: req.body.passwordCheck
+        password: hashedPassword
     });
 
     user.save().then(data => {

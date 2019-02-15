@@ -1,8 +1,9 @@
 const express = require('express');
 const createToken = require('../libs/auth').createToken;
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 const User = require('../models/user').User;
-const { check, validationResult, body } = require('express-validator/check');
+const { check, validationResult } = require('express-validator/check');
 
 router.post('/login_check',[
     check('email').not().isEmpty().isString().isEmail(),
@@ -21,9 +22,9 @@ router.post('/login_check',[
         return res.status(400).json(errorsStructure);
     }
 
-    User.findOne({email: req.body.email, password: req.body.password}).then(
+    User.findOne({email: req.body.email}).then(
         (user) => {
-            if(user) {
+            if(user && bcrypt.compareSync(req.body.password, user.password)) {
                 const token = createToken(user);
                 res.send({
                     token
