@@ -1,6 +1,8 @@
 import { fetchUser } from "./user";
 
 const logUser = (data, dispatch) => {
+    localStorage.setItem('token', data.token);
+    
     dispatch(fetchUser(dispatch));
 
     return {
