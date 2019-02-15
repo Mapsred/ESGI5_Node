@@ -18,31 +18,18 @@ router.post('/', [
     })
 ], (req, res) => {
     const errors = validationResult(req);
-    let errorsTemplate = {
+    let errorsStructure = {
         error: "Registration invalid",
         details: []
     };
 
-    console.log(errors.array());
-
     if (!errors.isEmpty()) {
         const errorsArray = errors.array();
         for(let i in errorsArray) {
-            errorsTemplate.details.push(errorsArray[i]);
+            errorsStructure.details.push(errorsArray[i]);
         }
-        return res.status(400).json(errorsTemplate);
+        return res.status(400).json(errorsStructure);
     }
-
-    // if (req.body.password !== req.body.passwordCheck) {
-    //     const detail = {
-    //         location: 'body',
-    //         param: 'password',
-    //         value: req.body.password,
-    //         msg: 'Password confirmation does not match password'
-    //     };
-    //     errorsTemplate.details.push(detail);
-    //     return res.status(400).json(errorsTemplate);
-    // }
 
     const user = new User({
         email: req.body.email,

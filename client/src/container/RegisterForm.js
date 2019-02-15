@@ -6,6 +6,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import FormLabel from '@material-ui/core/FormLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 export default class RegisterForm extends React.Component {
 
@@ -29,13 +30,31 @@ export default class RegisterForm extends React.Component {
     };
 
     render() {
+        let errors = {};
+        if(typeof this.props.register.error !== undefined && this.props.register.details !== undefined && this.props.register.details.length > 0){
+            const details = this.props.register.details;
+            for(let i in details) {
+                errors[details[i]['param']] = details[i]['msg'];
+            }
+        }
+
+        const shouldHaveError = function(field) {
+            return Object.entries(errors).length !== 0 && errors.constructor === Object && typeof errors[field] !== "undefined";
+        };
+
+        const getErrorMsg = function(field) {
+            return errors[field] !== "undefined" ? errors[field] : "";
+        };
+
         return (
             <Grid container justify="center">
                 <form noValidate onSubmit={this.handleSubmit}>
                     <FormLabel component="legend">Inscription</FormLabel>
                     <FormGroup>
-                        <FormControl error>
+                        <FormControl>
+                            {shouldHaveError('email') && <FormHelperText style={{color: "red"}}>{getErrorMsg('email')}</FormHelperText>}
                             <TextField
+                                error={shouldHaveError('email')}
                                 id="email"
                                 label="Email"
                                 onKeyUp={this.handleKeyUp('email')}
@@ -45,7 +64,9 @@ export default class RegisterForm extends React.Component {
                             />
                         </FormControl>
                         <FormControl>
+                            {shouldHaveError('firstname') && <FormHelperText style={{color: "red"}}>{getErrorMsg('firstname')}</FormHelperText>}
                             <TextField
+                                error={shouldHaveError('firstname')}
                                 id="firstname"
                                 label="Firstname"
                                 onKeyUp={this.handleKeyUp('firstname')}
@@ -54,7 +75,9 @@ export default class RegisterForm extends React.Component {
                             />
                         </FormControl>
                         <FormControl>
+                            {shouldHaveError('lastname') && <FormHelperText style={{color: "red"}}>{getErrorMsg('lastname')}</FormHelperText>}
                             <TextField
+                                error={shouldHaveError('lastname')}
                                 id="lastname"
                                 label="Lastname"
                                 onKeyUp={this.handleKeyUp('lastname')}
@@ -63,7 +86,9 @@ export default class RegisterForm extends React.Component {
                             />
                         </FormControl>
                         <FormControl>
+                            {shouldHaveError('password') && <FormHelperText style={{color: "red"}}>{getErrorMsg('password')}</FormHelperText>}
                             <TextField
+                                error={shouldHaveError('password')}
                                 id="password"
                                 label="Password"
                                 onKeyUp={this.handleKeyUp('password')}
@@ -72,7 +97,9 @@ export default class RegisterForm extends React.Component {
                             />
                         </FormControl>
                         <FormControl>
+                            {shouldHaveError('passwordCheck') && <FormHelperText style={{color: "red"}}>{getErrorMsg('passwordCheck')}</FormHelperText>}
                             <TextField
+                                error={shouldHaveError('passwordCheck')}
                                 id="passwordCheck"
                                 label="Password check"
                                 onKeyUp={this.handleKeyUp('passwordCheck')}
@@ -82,7 +109,7 @@ export default class RegisterForm extends React.Component {
                         </FormControl>
                         <FormControl>
                             <Button type="submit" variant="contained" color="primary">
-                                S'enregistrer
+                                Register
                             </Button>
                         </FormControl>
                     </FormGroup>
