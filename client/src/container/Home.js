@@ -21,7 +21,8 @@ export default class Home extends React.Component {
 
 
         rythm.setGain(0.2);
-        rythm.start();
+
+        setTimeout(() => rythm.start(), 1);
 
         this.setState({
             rythm: rythm

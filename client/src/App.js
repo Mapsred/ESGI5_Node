@@ -30,7 +30,7 @@ const styles = {
 
 class App extends Component {
     render() {
-        const { classes, user } = this.props;
+        const { classes } = this.props;
         return (
             <React.Fragment>
                 <CssBaseline/>
