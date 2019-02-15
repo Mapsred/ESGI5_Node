@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent/CardContent";
 import Typography from "@material-ui/core/Typography/Typography";
 import { withStyles } from "@material-ui/core";
 import Button from "@material-ui/core/Button/Button";
+import CardActions from "@material-ui/core/CardActions/CardActions";
 
 const styles = {
     card: {
