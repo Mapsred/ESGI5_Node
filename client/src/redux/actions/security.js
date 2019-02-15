@@ -1,20 +1,7 @@
 import { fetchUser } from "./user";
 
 const logUser = (data, dispatch) => {
-    const token = localStorage.getItem('token');
-
-    fetch('http://127.0.0.1:3000/user',
-        {
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            }
-        })
-        .then(response => response.json())
-        .then(() => dispatch(fetchUser(dispatch)))
-        .catch(error => console.log(error));
+    dispatch(fetchUser(dispatch));
 
     return {
         type: 'LOGIN',
