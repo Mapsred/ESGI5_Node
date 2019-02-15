@@ -1,7 +1,6 @@
 import React from 'react';
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
-import Typography from "@material-ui/core/Typography";
 import connect from "react-redux/es/connect/connect";
 import { fetchUser } from "../redux/actions/user";
 import { withStyles } from "@material-ui/core";
@@ -33,9 +32,9 @@ class HeaderContainer extends React.Component {
         return (
             <AppBar position="static" className={classes.root}>
                 <Toolbar className={classes.bar}>
-                    <Typography variant="title" color="inherit">
+                    <Link component={RouterLink} to='/' color="inherit" variant="title">
                         ReactStoreFront
-                    </Typography>
+                    </Link>
 
                     {user.isActive &&
                     <Link component={RouterLink} to='/products' color="inherit" variant="body1">

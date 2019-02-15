@@ -10,6 +10,7 @@ import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import { withStyles } from "@material-ui/core";
 import { connect } from "react-redux";
 import NotFound from "./components/NotFound";
+import Home from "./components/Home";
 
 const styles = {
     root: {
@@ -43,13 +44,10 @@ class App extends Component {
                                 <Switch>
                                     <Route path="/register" component={RegisterContainer}/>
                                     <Route path="/security" component={SecurityContainer}/>
-                                    {user.isActive &&
-                                    <React.Fragment>
-                                        <Route path="/products" component={ProductContainer}/>
-                                        <Route path="/cart" component={CartContainer}/>
-                                    </React.Fragment>
-                                    }
-                                    <Route path="/" component={NotFound}/>
+                                    <Route path="/products" component={ProductContainer}/>
+                                    <Route path="/cart" component={CartContainer}/>
+                                    <Route path="/" exact component={Home}/>
+                                    <Route path="*" component={NotFound}/>
                                 </Switch>
                             </main>
                         </div>
