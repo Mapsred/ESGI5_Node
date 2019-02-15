@@ -37,9 +37,11 @@ class HeaderContainer extends React.Component {
                         ReactStoreFront
                     </Typography>
 
+                    {user.isActive &&
                     <Link component={RouterLink} to='/products' color="inherit" variant="body1">
                         Products
                     </Link>
+                    }
 
                     <div>
                         {!user.isActive && <AuthControls/>}

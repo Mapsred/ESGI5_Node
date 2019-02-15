@@ -8,6 +8,8 @@ import HeaderContainer from "./container/HeaderContainer";
 import CartContainer from './container/CartContainer';
 import CssBaseline from "@material-ui/core/CssBaseline/CssBaseline";
 import { withStyles } from "@material-ui/core";
+import { connect } from "react-redux";
+import NotFound from "./components/NotFound";
 
 const styles = {
     root: {
@@ -27,7 +29,9 @@ const styles = {
 
 class App extends Component {
     render() {
-        const { classes } = this.props;
+        const { classes, user } = this.props;
+
+        console.log(user);
         return (
             <React.Fragment>
                 <CssBaseline/>
@@ -39,8 +43,13 @@ class App extends Component {
                                 <Switch>
                                     <Route path="/register" component={RegisterContainer}/>
                                     <Route path="/security" component={SecurityContainer}/>
-                                    <Route path="/products" component={ProductContainer}/>
-                                    <Route path="/cart" component={CartContainer}/>
+                                    {user.isActive &&
+                                    <React.Fragment>
+                                        <Route path="/products" component={ProductContainer}/>
+                                        <Route path="/cart" component={CartContainer}/>
+                                    </React.Fragment>
+                                    }
+                                    <Route path="/" component={NotFound}/>
                                 </Switch>
                             </main>
                         </div>
@@ -51,4 +60,13 @@ class App extends Component {
     }
 }
 
-export default withStyles(styles)(App);
+const mapStateToProps = (state) => {
+
+    const { user } = state.user;
+
+    return {
+        user
+    }
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(App));
