@@ -57,6 +57,9 @@ class Product extends React.PureComponent {
                             <Button size="small" onClick={() => this.props.onClick()}>Remove</Button>
                         </div>
                     </CardContent>
+                    <CardActions>
+                        <Button size="small" color="primary" onClick={() => this.props.onClick()}>Remove from cart</Button>
+                    </CardActions>
                 </div>
             </Card>
         )
